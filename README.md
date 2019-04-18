@@ -7,8 +7,7 @@ Which is itself an example of the Microsoft Northwind database
 Since then it has grown into a test database that is specifically designed to both show-off and to deeply test
 the capabilities of two [CareSet](https://careset.com) Open Source Projects.
 
-It is modified specifically as a test platform for https://github.com/CareSet/DURC
-and https://github.com/CareSet/Zermelo
+It is modified specifically as a test platform for [DURC](https://github.com/CareSet/DURC) and [Zermelo](https://github.com/CareSet/Zermelo)
 
 Which are the Laravel data viewing and data editing projects from CareSet. 
 
