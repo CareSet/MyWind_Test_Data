@@ -444,6 +444,48 @@ LOCK TABLES `vote` WRITE;
 /*!40000 ALTER TABLE `vote` DISABLE KEYS */;
 INSERT INTO `vote` VALUES (1,1,'1','2017-12-01 00:00:00','2017-12-01 00:00:00'),(2,1,'-1','2017-12-01 00:00:00','2017-12-01 00:00:00'),(3,1,'1','2017-12-01 00:00:00','2017-12-01 00:00:00'),(4,2,'1','2017-12-06 00:00:00','2017-12-01 00:00:00'),(5,2,'1','2017-12-01 00:00:00','2017-12-08 00:00:00');
 /*!40000 ALTER TABLE `vote` ENABLE KEYS */;
+
+
+--
+-- Table structure for table `magicField`
+--
+
+CREATE TABLE `magicField` (
+  `id` int(11) NOT NULL,
+  `editsome_markdown` varchar(2000) NOT NULL,
+  `typesome_sql_code` varchar(2000) NOT NULL,
+  `typesome_php_code` text NOT NULL,
+  `typesome_python_code` text NOT NULL,
+  `typesome_javascript_code` varchar(3000) NOT NULL,
+  `created_at` datetime NOT NULL DEFAULT current_timestamp(),
+  `updated_at` datetime NOT NULL DEFAULT current_timestamp(),
+  `deleted_at` datetime DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `magicField`
+--
+ALTER TABLE `magicField`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `magicField`
+--
+ALTER TABLE `magicField`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+COMMIT;
+
+
+
+
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
