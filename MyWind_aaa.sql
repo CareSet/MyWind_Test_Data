@@ -457,6 +457,8 @@ CREATE TABLE `magicField` (
   `typesome_php_code` text NOT NULL,
   `typesome_python_code` text NOT NULL,
   `typesome_javascript_code` varchar(3000) NOT NULL,
+  `this_datetime` datetime NOT NULL DEFAULT current_timestamp(),
+  `this_date` DATE NOT NULL DEFAULT current_timestamp(),
   `created_at` datetime NOT NULL DEFAULT current_timestamp(),
   `updated_at` datetime NOT NULL DEFAULT current_timestamp(),
   `deleted_at` datetime DEFAULT NULL
