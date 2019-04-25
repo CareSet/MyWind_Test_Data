@@ -492,17 +492,48 @@ ALTER TABLE `magicField`
 COMMIT;
 
 
+-- --------------------------------------------------------
 
+--
+-- Table structure for table `tags_report`
+--
 
-UNLOCK TABLES;
-/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+DROP TABLE IF EXISTS `tags_report`;
 
-/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
-/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
-/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
-/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+CREATE TABLE `tags_report` (
+  `id` bigint(20) NOT NULL,
+  `field_to_bold_in_report_display` varchar(255) NOT NULL,
+  `field_to_hide_by_default` varchar(255) NOT NULL,
+  `field_to_italic_in_report_display` varchar(255) NOT NULL,
+  `field_to_right_align_in_report` varchar(255) NOT NULL,
+  `field_to_bolditalic_in_report_display` varchar(255) NOT NULL,
+  `numeric_field` int(11) NOT NULL,
+  `decimal_field` decimal(10,4) NOT NULL,
+  `currency_field` varchar(255) NOT NULL,
+  `percent_field` int(11) NOT NULL,
+  `url_field` varchar(255) NOT NULL,
+  `time_field` time NOT NULL,
+  `date_field` date NOT NULL,
+  `datetime_field` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
--- Dump completed on 2018-01-01 15:14:50
+--
+-- Dumping data for table `tags_report`
+--
+
+INSERT INTO `tags_report` (`id`, `field_to_bold_in_report_display`, `field_to_hide_by_default`, `field_to_italic_in_report_display`, `field_to_right_align_in_report`, `field_to_bolditalic_in_report_display`, `numeric_field`, `decimal_field`, `currency_field`, `percent_field`, `url_field`, `time_field`, `date_field`, `datetime_field`) VALUES
+(1, 'bold', 'hidden', 'italic', 'r-align', 'bold and italic', 100, '12.3450', '36.50', 85, 'https://google.com', '02:11:00', '2018-12-05', '2018-12-19 06:05:08');
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `tags_report`
+--
+ALTER TABLE `tags_report`
+  ADD PRIMARY KEY (`id`);
+
+ALTER TABLE `tags_report`
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
