@@ -11,6 +11,14 @@ It is modified specifically as a test platform for [DURC](https://github.com/Car
 
 Which are the Laravel data viewing and data editing projects from CareSet. 
 
+Use:
+```
+php load_databases.php
+```
+
+This will ask for your root password to MySQL and will delete and reload all of the MyWind_XXX databases
+
+
 The northwind_data and northwind_model tables
 -----------------
 

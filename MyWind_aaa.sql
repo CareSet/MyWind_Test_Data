@@ -149,6 +149,8 @@ UNLOCK TABLES;
 -- Table structure for table `bookextended`
 --
 
+DROP TABLE IF EXISTS `bookextended`;
+
 CREATE TABLE `bookextended` (
   `book_id` int(11) NOT NULL,
   `ISBN` varchar(255) NOT NULL,
@@ -449,6 +451,10 @@ INSERT INTO `vote` VALUES (1,1,'1','2017-12-01 00:00:00','2017-12-01 00:00:00'),
 --
 -- Table structure for table `magicField`
 --
+
+UNLOCK TABLES;
+
+DROP TABLE IF EXISTS `magicField`;
 
 CREATE TABLE `magicField` (
   `id` int(11) NOT NULL,
