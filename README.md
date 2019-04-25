@@ -16,6 +16,15 @@ Use:
 php load_databases.php
 ```
 
+At this point the reports should work. However, there is not really enough data included here to really test some of the 
+features designed to work with larger datasets. If you would like, you can generate random data which will inflate the contents
+of MyWind_northwind_data with somewhat reasonable results. To do this, run 
+
+```
+php inflate_mywind.php 10000 
+```
+Which will generate the kind of data that you might expect a small business to actually have. 
+
 This will ask for your root password to MySQL and will delete and reload all of the MyWind_XXX databases
 
 
