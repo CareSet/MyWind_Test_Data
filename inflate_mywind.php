@@ -32,6 +32,7 @@ LIMIT 0,1
 
 	$faker = Faker\Factory::create();
 
+	$days_ago_to_simulate = 6000; //about 5 years...
 
 for($i = 0; $i < $loop_for; $i++){
 
@@ -54,7 +55,7 @@ for($i = 0; $i < $loop_for; $i++){
 		$shippingfee = rand(5,15);
 		$paymentAmount = rand(5,15) * 7;		
 
-		$ago = rand(5,365); //days ago
+		$ago = rand(30,$days_ago_to_simulate); //days ago
 		$createdDate = date('Y-m-d', strtotime( '-' . $ago + rand(1,5)  . ' days'));
 		$submittedDate = date('Y-m-d', strtotime( '-' . $ago + rand(5,8)  . ' days'));
 		$paymentDate = date('Y-m-d', strtotime( '-' . $ago + rand(4,12)  . ' days'));
