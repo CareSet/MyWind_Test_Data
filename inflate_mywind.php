@@ -1,7 +1,7 @@
 <?php
 
 	require_once(__DIR__ . '/util/mysqli.php');
-
+	require_once(__DIR__ . '/vendor/autoload.php');
 
 	if(!isset($argv[1])){
 		echo "Usage: inflate_mywind.php {num_purchase_orders}";
@@ -29,6 +29,8 @@ JOIN MyWind_northwind_model.supplier ON
 ORDER BY RAND()
 LIMIT 0,1
 ";
+
+	$faker = Faker\Factory::create();
 
 
 for($i = 0; $i < $loop_for; $i++){
@@ -113,7 +115,17 @@ VALUES
 
 		$orderDate = date('Y-m-d', strtotime( '-' . $ago + rand(60,70)  . ' days'));
 		$shipDate = date('Y-m-d', strtotime( '-' . $ago + rand(70,80)  . ' days'));
-		
+	
+		$shipName = esc($faker->name);
+		$shipAddress = esc($faker->streetAddress);
+		$shipCity = esc($faker->city);
+		$shipState = esc($faker->stateAbbr);
+		$shipCountryRegion = "'US'";
+		$shipZipPostalCode = esc($faker->postcode);
+	
+		$shippingFee = rand(30,500) / 10;
+		$taxes = rand(40,700) /10;
+	
 		$order_sql = "
 INSERT INTO MyWind_northwind_data.order 
 	(`id`, `employee_id`, `customer_id`, 
@@ -126,9 +138,9 @@ INSERT INTO MyWind_northwind_data.order
 VALUES 
 	(NULL, '$employee_id', '$customer_id', 
 	'$orderDate', '$shipDate', '$ship_id', 
-	'Main Customer Address', '101 Main ST. ', 'Dallas', 
-	'TX', '79000', 'Central', 
-	'5', '5', 'Credit Card', 
+	$shipName, $shipAddress, $shipCity, 
+	$shipState, $shipZipPostalCode, $shipCountryRegion, 
+	'$shippingFee', '$taxes', 'Credit Card', 
 	'$orderDate', 'no notes', '.4', 
 	'1', '2');
 ";
@@ -158,4 +170,13 @@ VALUES
 
 
 }//end for loop 
+
+echo "\nall done.\n";
+
+//someday we might want to change how this works.
+function esc($string){
+	return "'". f_mysql_real_escape_string($string)."'";
+}
+
+
 	
