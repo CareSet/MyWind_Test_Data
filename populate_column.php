@@ -3,6 +3,9 @@
 	require_once(__DIR__ . '/util/mysqli.php');
 	require_once(__DIR__ . '/vendor/autoload.php');
 
+
+if($argv[0] == basename(__FILE__)){ //then this script was called from the command line directly... 
+
 	if(!isset($argv[4])){
 		echo "Usage: populate_column.php {database} {table} {column} {faker_field}";
 		exit(); 
@@ -11,6 +14,14 @@
 	$table = f_mysql_real_escape_string($argv[2]);
 	$column = f_mysql_real_escape_string($argv[3]);
 	$faker_field = f_mysql_real_escape_string($argv[4]); //who knows perhaps there will be malicous input to the php code?
+
+	$is_check_with_user = true;
+
+	populate_column($database,$table,$column,$faker_field,$is_check_with_user);
+
+}
+
+function populate_column($database,$table,$column,$faker_field,$is_check_with_user = false){
 
 	
 	if(
@@ -50,9 +61,12 @@ FROM $database.$table
 		exit();
 	}
 
-	echo "There are $row_count rows of data and $distinct_row_count distinct values in those data currently living inside $database.$table column $column. \n";
-	$answer = readline("Given that, are you sure you want to continue? (needs a 'yes') >");
+	$answer = 'yes'; //assume this for when $is_check_with_user = false;
 
+	if($is_check_with_user){
+		echo "There are $row_count rows of data and $distinct_row_count distinct values in those data currently living inside $database.$table column $column. \n";
+		$answer = readline("Given that, are you sure you want to continue? (needs a 'yes') >");
+	}
 	if(strtolower($answer) == 'yes'){
 
 		for($i=1; $i<$row_count ; $i++){ //loop over every row of data
@@ -69,7 +83,7 @@ WHERE id = '$i'
 
 
 	}
-
+}
 
 
 //someday we might want to change how this works.
