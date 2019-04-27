@@ -69,7 +69,7 @@ FROM $database.$table
 	}
 	if(strtolower($answer) == 'yes'){
 
-		for($i=1; $i<$row_count ; $i++){ //loop over every row of data
+		for($i=1; $i <= $row_count ; $i++){ //loop over every row of data
 			$new_value = f_mysql_real_escape_string($faker->$faker_field);
 			$update_sql = "
 UPDATE $database.$table
