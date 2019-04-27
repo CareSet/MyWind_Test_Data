@@ -79,6 +79,9 @@ function f_mysql_query($query){
 
 //wrapper for http://us3.php.net/manual/en/mysqli.real-escape-string.php
 function f_mysql_real_escape_string($string){
+	if(is_array($string)){
+		var_export($string);
+	}
 	return mysqli_real_escape_string($GLOBALS['DB_LINK'], $string);
 }
 
