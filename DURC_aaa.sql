@@ -422,8 +422,116 @@ INSERT INTO `sibling` VALUES (1,'Maria',1,2,'2017-12-05 00:00:00','2017-12-05 00
 UNLOCK TABLES;
 
 --
--- Table structure for table `vote`
+-- Table structure for table `test_null_default`
 --
+
+CREATE TABLE `test_null_default` (
+  `id` int(11) NOT NULL,
+  `null_var` varchar(255) DEFAULT NULL,
+  `non_null_var_def` varchar(255) NOT NULL,
+  `non_null_var_no_def` varchar(255) DEFAULT NULL,
+  `nullable_w_default` varchar(255) DEFAULT 'THIS IS THE DEFAULT',
+  `non_null_default` varchar(255) NOT NULL DEFAULT 'I CANNOT BE NULL'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `test_null_default`
+--
+LOCK TABLES `test_null_default` WRITE;
+INSERT INTO `test_null_default` (`id`, `null_var`, `non_null_var_def`, `non_null_var_no_def`, `nullable_w_default`, `non_null_default`) VALUES
+(1, 'three', 'smelly', 'four', 'THIS IS THE DEFAULT', 'I CANNOT BE NULL'),
+(2, NULL, 'non null', NULL, 'THIS IS THE DEFAULT', 'I CANNOT BE NULL');
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `test_null_default`
+--
+ALTER TABLE `test_null_default`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `test_null_default`
+--
+ALTER TABLE `test_null_default`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+UNLOCK TABLES;
+
+
+--
+-- Table structure for table `test_default_dates`
+--
+CREATE TABLE `test_default_date` (
+  `id` int(11) NOT NULL,
+  `datetime_none` datetime NOT NULL,
+  `date_none` date NOT NULL,
+  `datetime_current` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `date_current` varchar(255) DEFAULT 'Current timestamp not supported for date',
+  `datetime_null` datetime DEFAULT NULL,
+  `date_null` date DEFAULT NULL,
+  `datetime_defined` datetime NOT NULL DEFAULT '2000-01-01 01:23:45',
+  `date_defined` date NOT NULL DEFAULT '2000-01-01'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `test_default_dates`
+--
+ALTER TABLE `test_default_date`
+  ADD PRIMARY KEY (`id`);
+
+
+
+--
+-- Table structure for table `test_cards`
+--
+
+CREATE TABLE `test_cards` (
+  `id` int(11) NOT NULL,
+  `title` varchar(255) NOT NULL,
+  `type` varchar(255) NOT NULL,
+  `text` text NOT NULL,
+  `image_url` text NOT NULL,
+  `alt_text` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `test_cards`
+--
+
+INSERT INTO `test_cards` (`id`, `title`, `type`, `text`, `image_url`, `alt_text`) VALUES
+(1, 'iTunes', 'music', 'Apple iTunes Music', 'https://kenchapple.com/wp-content/uploads/2013/03/22-100x100.jpg', 'Alt Text iTunes'),
+(2, 'YouTube', 'video', 'YouTube Video Service', 'https://kenchapple.com/wp-content/uploads/2013/03/3-100x100.jpg', 'Alt Text Youtube'),
+(3, 'AirPlay Direct', 'music', 'Airplay Direct Music Service', 'https://kenchapple.com/wp-content/uploads/2013/03/4-100x100.jpg', 'Alt Text AirplayDirect');
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `test_cards`
+--
+ALTER TABLE `test_cards`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `test_cards`
+--
+ALTER TABLE `test_cards`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 DROP TABLE IF EXISTS `vote`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;

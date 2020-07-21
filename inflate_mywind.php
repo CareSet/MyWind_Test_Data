@@ -5,7 +5,7 @@
 
 	if(!isset($argv[1])){
 		echo "Usage: inflate_mywind.php {num_purchase_orders}";
-		exit(); 
+		exit();
 	}
 	$loop_for = $argv[1];
 
@@ -19,11 +19,11 @@ SELECT
     	productName,
     	supplier.id AS supplier_id,
     	supplier.company AS supplier_name
-FROM MyWind_northwind_model.product
-JOIN MyWind_northwind_model.product_to_supplier ON 
+FROM DURC_northwind_model.product
+JOIN DURC_northwind_model.product_to_supplier ON 
 	product_to_supplier.product_id =
     	product.id
-JOIN MyWind_northwind_model.supplier ON 
+JOIN DURC_northwind_model.supplier ON 
 	product_to_supplier.supplier_id =
     	supplier.id
 ORDER BY RAND()
@@ -36,7 +36,7 @@ LIMIT 0,1
 
 for($i = 0; $i < $loop_for; $i++){
 
-	
+
 	$result = f_mysql_query($product_supplier_pair_sql);
 
 
@@ -53,7 +53,7 @@ for($i = 0; $i < $loop_for; $i++){
 		$status_id = 2;
 		$taxes = rand(10,35);
 		$shippingfee = rand(5,15);
-		$paymentAmount = rand(5,15) * 7;		
+		$paymentAmount = rand(5,15) * 7;
 
 		$ago = rand(30,$days_ago_to_simulate); //days ago
 		$createdDate = date('Y-m-d', strtotime( '-' . $ago + rand(1,5)  . ' days'));
@@ -62,9 +62,9 @@ for($i = 0; $i < $loop_for; $i++){
 		$approvedDate = date('Y-m-d', strtotime( '-' . $ago + rand(8,15)  . ' days'));
 		$expectedDate = date('Y-m-d', strtotime( '-' . $ago + rand(15,30)  . ' days'));
 		$receivedDate = date('Y-m-d', strtotime( '-' . $ago + rand(15,30)  . ' days'));
-	
+
 		$new_purchase_order_sql = "
-INSERT INTO MyWind_northwind_data.purchaseOrder 
+INSERT INTO DURC_northwind_data.purchaseOrder 
 	(`id`, `supplier_id`, `createdBy_employee_id`, 
 	`submittedDate`, `creationDate`, `status_id`, 
 	`expectedDate`, `shippingFee`, `taxes`, 
@@ -83,14 +83,14 @@ VALUES
 
 		f_mysql_query($new_purchase_order_sql);
 
-		$purchaseorder_id = f_mysql_insert_id(); //the last insert was the recent purchase order.. 
+		$purchaseorder_id = f_mysql_insert_id(); //the last insert was the recent purchase order..
 
 		$quantity = rand(10,40) * 10;
 		$unit_cost = rand(15,45) / 10;
 
 
 		$new_purchase_order_detail_sql = "
-INSERT INTO MyWind_northwind_data.purchaseOrderDetail 
+INSERT INTO DURC_northwind_data.purchaseOrderDetail 
 	(`id`, `purchaseOrder_id`, `product_id`, 
 	`quantity`, `unitCost`, `dateReceived`, 
 	`postedToInventory`, `inventory_id`) 
@@ -108,7 +108,7 @@ VALUES
 	//thats what it means to be a middle man.
 	$how_many_orders = rand(50,100);
 	for($j = 0; $j < $how_many_orders; $j++){
-	
+
 		$customer_id = rand(1,29);
 		$employee_id = rand(1,9);
 		$ship_id = rand(1,3);
@@ -116,19 +116,19 @@ VALUES
 
 		$orderDate = date('Y-m-d', strtotime( '-' . $ago + rand(60,70)  . ' days'));
 		$shipDate = date('Y-m-d', strtotime( '-' . $ago + rand(70,80)  . ' days'));
-	
+
 		$shipName = esc($faker->name);
 		$shipAddress = esc($faker->streetAddress);
 		$shipCity = esc($faker->city);
 		$shipState = esc($faker->stateAbbr);
 		$shipCountryRegion = "'US'";
 		$shipZipPostalCode = esc($faker->postcode);
-	
+
 		$shippingFee = rand(30,500) / 10;
 		$taxes = rand(40,700) /10;
-	
+
 		$order_sql = "
-INSERT INTO MyWind_northwind_data.order 
+INSERT INTO DURC_northwind_data.order 
 	(`id`, `employee_id`, `customer_id`, 
 	`orderDate`, `shippedDate`, `shipper_id`, 
 	`shipName`, `shipAddress`, `shipCity`, 
@@ -154,7 +154,7 @@ VALUES
 		$unit_price = rand(10,20);
 
 		$order_detail_sql = "
-INSERT INTO MyWind_northwind_data.orderDetail 
+INSERT INTO DURC_northwind_data.orderDetail 
 	(`id`, `order_id`, `product_id`, 
 	`quantity`, `unitPrice`, `discount`, 
 	`status_id`, `dateAllocated`, `PurchaseOrder_id`, 
@@ -170,7 +170,7 @@ VALUES
 	}
 
 
-}//end for loop 
+}//end for loop
 
 echo "\nall done.\n";
 
@@ -180,4 +180,4 @@ function esc($string){
 }
 
 
-	
+

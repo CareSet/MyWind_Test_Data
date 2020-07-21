@@ -2,7 +2,7 @@
 	require_once('populate_column.php'); //which will load it as a function only...
 
 	$randomize_these_fields = [
-		'MyWind_northwind_model' => [
+		'DURC_northwind_model' => [
 			'customer' => [
 				'emailAddress' => 'email',
 				'businessPhone' => 'phoneNumber',
@@ -55,7 +55,7 @@
 				'notes' => 'latin',
 				'attachments' => 'latin',
 			],
-					
+
 		],
 
 

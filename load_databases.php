@@ -1,16 +1,16 @@
 <?php
 
 
-	echo "Warning. This program will overwrite the current contents of the MyWind_XXXX databases\n";
+	echo "Warning. This program will overwrite the current contents of the DURC_XXXX databases\n";
 	echo "This is a destructive process, and if there is anything custom there (there should not be) then this will overwrite them\n";
-	
+
 	$password = prompt_silent();
 
 	$databases = [
-		'MyWind_aaa',
-		'MyWind_irs',
-		'MyWind_northwind_data',
-		'MyWind_northwind_model',
+		'DURC_aaa',
+		'DURC_irs',
+		'DURC_northwind_data',
+		'DURC_northwind_model',
 	];
 
 	$commands = [];
