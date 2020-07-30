@@ -492,10 +492,10 @@ ALTER TABLE `test_default_date`
 
 
 --
--- Table structure for table `test_cards`
+-- Table structure for table `test_card`
 --
 
-CREATE TABLE `test_cards` (
+CREATE TABLE `test_card` (
   `id` int(11) NOT NULL,
   `title` varchar(255) NOT NULL,
   `type` varchar(255) NOT NULL,
@@ -505,10 +505,10 @@ CREATE TABLE `test_cards` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `test_cards`
+-- Dumping data for table `test_card`
 --
 
-INSERT INTO `test_cards` (`id`, `title`, `type`, `text`, `image_url`, `alt_text`) VALUES
+INSERT INTO `test_card` (`id`, `title`, `type`, `text`, `image_url`, `alt_text`) VALUES
 (1, 'iTunes', 'music', 'Apple iTunes Music', 'https://kenchapple.com/wp-content/uploads/2013/03/22-100x100.jpg', 'Alt Text iTunes'),
 (2, 'YouTube', 'video', 'YouTube Video Service', 'https://kenchapple.com/wp-content/uploads/2013/03/3-100x100.jpg', 'Alt Text Youtube'),
 (3, 'AirPlay Direct', 'music', 'Airplay Direct Music Service', 'https://kenchapple.com/wp-content/uploads/2013/03/4-100x100.jpg', 'Alt Text AirplayDirect');
@@ -518,9 +518,9 @@ INSERT INTO `test_cards` (`id`, `title`, `type`, `text`, `image_url`, `alt_text`
 --
 
 --
--- Indexes for table `test_cards`
+-- Indexes for table `test_card`
 --
-ALTER TABLE `test_cards`
+ALTER TABLE `test_card`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -528,9 +528,9 @@ ALTER TABLE `test_cards`
 --
 
 --
--- AUTO_INCREMENT for table `test_cards`
+-- AUTO_INCREMENT for table `test_card`
 --
-ALTER TABLE `test_cards`
+ALTER TABLE `test_card`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 DROP TABLE IF EXISTS `vote`;
