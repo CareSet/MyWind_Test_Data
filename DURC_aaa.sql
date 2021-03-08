@@ -1,13 +1,13 @@
--- MySQL dump 10.16  Distrib 10.2.11-MariaDB, for debian-linux-gnu (x86_64)
+-- MySQL dump 10.17  Distrib 10.3.25-MariaDB, for debian-linux-gnu (x86_64)
 --
--- Host: localhost    Database: aaaDurctest
+-- Host: localhost    Database: DURC_aaa
 -- ------------------------------------------------------
--- Server version	10.2.11-MariaDB-10.2.11+maria~xenial-log
+-- Server version	10.3.25-MariaDB-0ubuntu0.20.04.1
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
+/*!40101 SET NAMES utf8mb4 */;
 /*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
 /*!40103 SET TIME_ZONE='+00:00' */;
 /*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
@@ -144,80 +144,29 @@ INSERT INTO `book` VALUES (1,'Hacking Healthcare - A guide to Meaningful Use','2
 /*!40000 ALTER TABLE `book` ENABLE KEYS */;
 UNLOCK TABLES;
 
-
 --
--- Table structure for table `bookextended`
+-- Table structure for table `characterTest`
 --
 
-DROP TABLE IF EXISTS `bookextended`;
-
-CREATE TABLE `bookextended` (
-  `book_id` int(11) NOT NULL,
-  `ISBN` varchar(255) NOT NULL,
-  `local_isle` varchar(255) NOT NULL,
-  `local_shelf` int(255) NOT NULL,
-  PRIMARY KEY (`book_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `bookextended`
---
-LOCK TABLES `bookextended` WRITE;
-INSERT INTO `bookextended` (`book_id`, `ISBN`, `local_isle`, `local_shelf`) VALUES
-(1, '12345', 'L', 112),
-(2, '66666', 'R', 32);
-UNLOCK TABLES;
-
---
--- Table structure for table `booleantest`
---
-DROP TABLE IF EXISTS `test_boolean`;
-
-CREATE TABLE `test_boolean` (
+DROP TABLE IF EXISTS `characterTest`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `characterTest` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `label` varchar(255) NOT NULL,
-  `is_something` varchar(255) NOT NULL,
-  `has_something` varchar(255) NOT NULL,
-  `is_something2` tinyint(4) DEFAULT NULL,
-  `has_something2` tinyint(4) DEFAULT NULL,
-  `has_something3` tinyint(1) DEFAULT NULL,
+  `funny_character_field` varchar(1000) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `booleantest`
+-- Dumping data for table `characterTest`
 --
 
-LOCK TABLES `test_boolean` WRITE;
-INSERT INTO `test_boolean` (`id`, `label`, `is_something`, `has_something`, `is_something2`, `has_something2`, `has_something3`) VALUES
-(1, 'Test checkbox', 'yes', '1', 1, 0, 1),
-(2, 'Test checkbox', '2', 'no', 0, 2, 0);
+LOCK TABLES `characterTest` WRITE;
+/*!40000 ALTER TABLE `characterTest` DISABLE KEYS */;
+INSERT INTO `characterTest` VALUES (1,'HIPAA  Administrative Simplification: Standard Unique Health Identifier for Health Care Providers;  Final Rule'),(2,'Health Insurance Portability and Accountability Act of 1996'),(3,'HIPAA Administrative Simplification: National Plan and Provider Enumeration System Data Dissemination'),(4,''),(5,'NPPES System of Record Notice'),(6,'Administrative Simplification: Adoption of Standard for Unique Health Plan Identifier; Addition to National Provider Identifier Requirements, etc.'),(7,'National Committee on Vital and Health. Statistics: Publication of Recommendations Relating to HIPAA Health Data Standards'),(8,'National Provider Identifier Activities Begin in 2005'),(9,'NATIONAL PROVIDER IDENTIFIER (NPI) APPLICATION/UPDATE FORM'),(10,'National Plan and Provider Enumeration System (NPPES) Data Elements Data Dissemination Information for Providers'),(11,'Patient Protection and Affordable Care Act');
+/*!40000 ALTER TABLE `characterTest` ENABLE KEYS */;
 UNLOCK TABLES;
-
---
--- Table structure for table `test_created_only`
---
-DROP TABLE IF EXISTS `test_created_only`;
-
-CREATE TABLE `test_created_only` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) DEFAULT NULL,
-  `created_at` datetime NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `test_created_only`
---
-
-LOCK TABLES `test_created_only` WRITE;
-INSERT INTO `test_created_only` (`id`, `name`, `created_at`) VALUES
-(1, 'Test 1', '2018-02-22 00:00:00'),
-(2, 'Test 2', '2018-02-21 00:00:00');
-UNLOCK TABLES;
-
-
-
 
 --
 -- Table structure for table `comment`
@@ -272,6 +221,32 @@ LOCK TABLES `donation` WRITE;
 /*!40000 ALTER TABLE `donation` DISABLE KEYS */;
 INSERT INTO `donation` VALUES (1,11,741152597,'2018-01-10 00:12:00','2018-01-11 00:01:00',NULL);
 /*!40000 ALTER TABLE `donation` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `filterTest`
+--
+
+DROP TABLE IF EXISTS `filterTest`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `filterTest` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `test_url` varchar(1000) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `test_json` mediumtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` datetime NOT NULL DEFAULT current_timestamp(),
+  `updated_at` datetime NOT NULL DEFAULT current_timestamp(),
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `filterTest`
+--
+
+LOCK TABLES `filterTest` WRITE;
+/*!40000 ALTER TABLE `filterTest` DISABLE KEYS */;
+/*!40000 ALTER TABLE `filterTest` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -343,17 +318,17 @@ CREATE TABLE `funnything` (
   `thisint` int(11) DEFAULT NULL,
   `thisfloat` float DEFAULT NULL,
   `thisdecimal` decimal(5,5) DEFAULT NULL,
-  `thisvarchar` varchar(100) DEFAULT NULL,
+  `thisvarchar` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `thisdate` date DEFAULT NULL,
   `thisdatetime` datetime DEFAULT NULL,
   `thistimestamp` timestamp NULL DEFAULT NULL,
-  `thischar` char(1) NOT NULL,
-  `thistext` text NOT NULL,
+  `thischar` char(1) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `thistext` mediumtext COLLATE utf8mb4_unicode_ci NOT NULL,
   `thisblob` blob DEFAULT NULL,
   `thistinyint` tinyint(11) NOT NULL,
-  `thistinytext` tinytext NOT NULL,
+  `thistinytext` text COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -364,6 +339,91 @@ LOCK TABLES `funnything` WRITE;
 /*!40000 ALTER TABLE `funnything` DISABLE KEYS */;
 INSERT INTO `funnything` VALUES (1,1,1.1,0.00000,'vc','2017-12-05','2017-12-19 00:00:00','2017-12-21 00:00:00','c','t',NULL,1,'tt');
 /*!40000 ALTER TABLE `funnything` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `graphdata_nodetypetests`
+--
+
+DROP TABLE IF EXISTS `graphdata_nodetypetests`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `graphdata_nodetypetests` (
+  `source_id` varchar(50) CHARACTER SET latin1 NOT NULL,
+  `source_name` varchar(190) CHARACTER SET latin1 NOT NULL,
+  `source_size` int(11) NOT NULL DEFAULT 0,
+  `source_type` varchar(190) CHARACTER SET latin1 NOT NULL,
+  `source_group` varchar(190) CHARACTER SET latin1 NOT NULL,
+  `source_longitude` decimal(17,7) NOT NULL DEFAULT 0.0000000,
+  `source_latitude` decimal(17,7) NOT NULL DEFAULT 0.0000000,
+  `source_img` varchar(190) CHARACTER SET latin1 DEFAULT NULL,
+  `target_id` varchar(50) CHARACTER SET latin1 NOT NULL,
+  `target_name` varchar(190) CHARACTER SET latin1 NOT NULL,
+  `target_size` int(11) NOT NULL DEFAULT 0,
+  `target_type` varchar(190) CHARACTER SET latin1 NOT NULL,
+  `target_group` varchar(190) CHARACTER SET latin1 NOT NULL,
+  `target_longitude` decimal(17,7) NOT NULL DEFAULT 0.0000000,
+  `target_latitude` decimal(17,7) NOT NULL DEFAULT 0.0000000,
+  `target_img` varchar(190) CHARACTER SET latin1 DEFAULT NULL,
+  `weight` int(11) NOT NULL DEFAULT 50,
+  `link_type` varchar(190) CHARACTER SET latin1 NOT NULL,
+  `query_num` int(11) NOT NULL,
+  PRIMARY KEY (`source_id`,`source_type`,`target_id`,`target_type`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `graphdata_nodetypetests`
+--
+
+LOCK TABLES `graphdata_nodetypetests` WRITE;
+/*!40000 ALTER TABLE `graphdata_nodetypetests` DISABLE KEYS */;
+INSERT INTO `graphdata_nodetypetests` VALUES ('1114904687','Magid',300,'npi','Provider',0.0000000,0.0000000,'/images/1.png','1891995221','Alice',200,'npi','Provider',0.0000000,0.0000000,'/images/1.png',100,'Referral',1),('1114904687','Magid',300,'npi','Provider',0.0000000,0.0000000,'/images/1.png','7','77006',400,'zipcode','Provider Zip Code',0.0000000,0.0000000,'/images/1.png',50,'Practices In',1),('1891995221','Alice',300,'npi','Provider',0.0000000,0.0000000,'/images/1.png','7','77006',400,'zipcode','Provider Zip Code',0.0000000,0.0000000,'/images/1.png',50,'Practices In',1),('1972539492','Medical Clinic',0,'npi','Clinic',0.0000000,0.0000000,'/images/1.png','1114904687','Magid',200,'npi','Provider',0.0000000,0.0000000,'/images/1.png',400,'Affiliation',1),('1972539492','Medical Clinic',200,'npi','Clinic',0.0000000,0.0000000,'/images/1.png','741181532','Clinic Tax Num',200,'taxnum','Taxnum',0.0000000,0.0000000,'/images/1.png',50,'Self',1),('1114904687','Magid',0,'npi','Provider',0.0000000,0.0000000,'/images/1.png','7135265511','7135265511',0,'phone','Phone',0.0000000,0.0000000,'/images/1.png',50,'phone',1),('1114904687','Magid',0,'npi','Provider',0.0000000,0.0000000,'/images/1.png','3923','CLIA 01D0299897 ROBERT D TAYLOR MD',0,'clia','Laboratory',0.0000000,0.0000000,'/images/1.png',50,'clia lab',1),('1891995221','Alice',0,'npi','Provider',0.0000000,0.0000000,'/images/1.png','D508','D508 Other iron deficiency anemias',300,'diagnosis','Diagnosis',0.0000000,0.0000000,'/images/1.png',150,'diagnosis',1),('1891995221','Alice',0,'npi','Provider',0.0000000,0.0000000,'/images/1.png','J0696','J0696 Injection, ceftriaxone sodium, per 250 mg',300,'procedure','Procedure',0.0000000,0.0000000,'/images/1.png',150,'procedure',1),('1972539492','Medical Clinic',200,'npi','Clinic',0.0000000,0.0000000,'/images/1.png','5','Health South',200,'system','System',0.0000000,0.0000000,'/images/1.png',50,'Self',1),('healthsouth.com','healthsouth.com',200,'domain','Website',0.0000000,0.0000000,'/images/1.png','5','Health South',200,'system','System',0.0000000,0.0000000,'/images/1.png',70,'Self',1),('1114904','Magid',300,'npi','Provider',0.0000000,0.0000000,'/images/1.png','1891995','Alice',200,'npi','Provider',0.0000000,0.0000000,'/images/1.png',100,'Referral',2),('1114904','Magid',300,'npi','Provider',0.0000000,0.0000000,'/images/1.png','7','77006',400,'zipcode','Provider Zip Code',0.0000000,0.0000000,'/images/1.png',50,'Practices In',2),('1891995','Alice',300,'npi','Provider',0.0000000,0.0000000,'/images/1.png','7','77006',400,'zipcode','Provider Zip Code',0.0000000,0.0000000,'/images/1.png',50,'Practices In',2),('1972539','Medical Clinic',0,'npi','Clinic',0.0000000,0.0000000,'/images/1.png','1114904','Magid',200,'npi','Provider',0.0000000,0.0000000,'/images/1.png',400,'Affiliation',2),('1972539','Medical Clinic',200,'npi','Clinic',0.0000000,0.0000000,'/images/1.png','741181532','Clinic Tax Num',200,'taxnum','Taxnum',0.0000000,0.0000000,'/images/1.png',50,'Self',2),('1114904','Magid',0,'npi','Provider',0.0000000,0.0000000,'/images/1.png','7135265','7135265',0,'phone','Phone',0.0000000,0.0000000,'/images/1.png',50,'phone',2),('1114904','Magid',0,'npi','Provider',0.0000000,0.0000000,'/images/1.png','3923','CLIA 01D0299897 ROBERT D TAYLOR MD',0,'clia','Laboratory',0.0000000,0.0000000,'/images/1.png',50,'clia lab',2),('1891995','Alice',0,'npi','Provider',0.0000000,0.0000000,'/images/1.png','D508','D508 Other iron deficiency anemias',300,'diagnosis','Diagnosis',0.0000000,0.0000000,'/images/1.png',150,'diagnosis',2),('1891995','Alice',0,'npi','Provider',0.0000000,0.0000000,'/images/1.png','J0696','J0696 Injection, ceftriaxone sodium, per 250 mg',300,'procedure','Procedure',0.0000000,0.0000000,'/images/1.png',150,'procedure',2),('1972539','Medical Clinic',200,'npi','Clinic',0.0000000,0.0000000,'/images/1.png','5','Health South',200,'system','System',0.0000000,0.0000000,'/images/1.png',50,'Self',2);
+/*!40000 ALTER TABLE `graphdata_nodetypetests` ENABLE KEYS */;
+UNLOCK TABLES;
+
+DROP TABLE IF EXISTS `leading_zero`;
+CREATE TABLE `leading_zero` (
+                                `id` int(11) NOT NULL AUTO_INCREMENT,
+                                `leading_zero_int` int(11) NOT NULL,
+                                `leading_zero_string` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+                                PRIMARY KEY (`id`)
+);
+
+INSERT INTO `leading_zero` (`id`, `leading_zero_int`, `leading_zero_string`) VALUES
+(1, 01, '001'),
+(2, 002, '000234s');
+
+--
+-- Table structure for table `magicField`
+--
+
+DROP TABLE IF EXISTS `magicField`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `magicField` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `editsome_markdown` varchar(2000) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `typesome_sql_code` varchar(2000) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `typesome_php_code` mediumtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `typesome_python_code` mediumtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `typesome_javascript_code` varchar(3000) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `this_datetime` datetime NOT NULL,
+  `this_date` date NOT NULL,
+  `created_at` datetime NOT NULL DEFAULT current_timestamp(),
+  `updated_at` datetime NOT NULL DEFAULT current_timestamp(),
+  `deleted_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `magicField`
+--
+
+LOCK TABLES `magicField` WRITE;
+/*!40000 ALTER TABLE `magicField` DISABLE KEYS */;
+/*!40000 ALTER TABLE `magicField` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -422,116 +482,155 @@ INSERT INTO `sibling` VALUES (1,'Maria',1,2,'2017-12-05 00:00:00','2017-12-05 00
 UNLOCK TABLES;
 
 --
--- Table structure for table `test_null_default`
+-- Table structure for table `tags_report`
 --
 
-CREATE TABLE `test_null_default` (
-  `id` int(11) NOT NULL,
-  `null_var` varchar(255) DEFAULT NULL,
-  `non_null_var_def` varchar(255) NOT NULL,
-  `non_null_var_no_def` varchar(255) DEFAULT NULL,
-  `nullable_w_default` varchar(255) DEFAULT 'THIS IS THE DEFAULT',
-  `non_null_default` varchar(255) NOT NULL DEFAULT 'I CANNOT BE NULL'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+DROP TABLE IF EXISTS `tags_report`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tags_report` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `field_to_bold_in_report_display` varchar(255) NOT NULL,
+  `field_to_hide_by_default` varchar(255) NOT NULL,
+  `field_to_italic_in_report_display` varchar(255) NOT NULL,
+  `field_to_right_align_in_report` varchar(255) NOT NULL,
+  `field_to_bolditalic_in_report_display` varchar(255) NOT NULL,
+  `numeric_field` int(11) NOT NULL,
+  `decimal_field` decimal(10,4) NOT NULL,
+  `currency_field` varchar(255) NOT NULL,
+  `percent_field` int(11) NOT NULL,
+  `url_field` varchar(255) NOT NULL,
+  `time_field` time NOT NULL,
+  `date_field` date NOT NULL,
+  `datetime_field` datetime NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `test_null_default`
---
-LOCK TABLES `test_null_default` WRITE;
-INSERT INTO `test_null_default` (`id`, `null_var`, `non_null_var_def`, `non_null_var_no_def`, `nullable_w_default`, `non_null_default`) VALUES
-(1, 'three', 'smelly', 'four', 'THIS IS THE DEFAULT', 'I CANNOT BE NULL'),
-(2, NULL, 'non null', NULL, 'THIS IS THE DEFAULT', 'I CANNOT BE NULL');
-
---
--- Indexes for dumped tables
+-- Dumping data for table `tags_report`
 --
 
---
--- Indexes for table `test_null_default`
---
-ALTER TABLE `test_null_default`
-  ADD PRIMARY KEY (`id`);
-
---
--- AUTO_INCREMENT for dumped tables
---
-
---
--- AUTO_INCREMENT for table `test_null_default`
---
-ALTER TABLE `test_null_default`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+LOCK TABLES `tags_report` WRITE;
+/*!40000 ALTER TABLE `tags_report` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tags_report` ENABLE KEYS */;
 UNLOCK TABLES;
 
+--
+-- Table structure for table `test_boolean`
+--
+
+DROP TABLE IF EXISTS `test_boolean`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `test_boolean` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `label` varchar(255) NOT NULL,
+  `is_something` varchar(255) NOT NULL,
+  `has_something` varchar(255) NOT NULL,
+  `is_something2` tinyint(4) DEFAULT NULL,
+  `has_something2` tinyint(4) DEFAULT NULL,
+  `has_something3` tinyint(1) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Table structure for table `test_default_dates`
+-- Dumping data for table `test_boolean`
 --
+
+LOCK TABLES `test_boolean` WRITE;
+/*!40000 ALTER TABLE `test_boolean` DISABLE KEYS */;
+INSERT INTO `test_boolean` VALUES (1,'Test checkbox','yes','1',1,0,1),(2,'Test checkbox','2','no',0,2,0);
+/*!40000 ALTER TABLE `test_boolean` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `test_created_only`
+--
+
+DROP TABLE IF EXISTS `test_created_only`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `test_created_only` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) DEFAULT NULL,
+  `created_at` datetime NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `test_created_only`
+--
+
+LOCK TABLES `test_created_only` WRITE;
+/*!40000 ALTER TABLE `test_created_only` DISABLE KEYS */;
+INSERT INTO `test_created_only` VALUES (1,'Test 1','2018-02-22 00:00:00'),(2,'Test 2','2018-02-21 00:00:00');
+/*!40000 ALTER TABLE `test_created_only` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `test_default_date`
+--
+
+DROP TABLE IF EXISTS `test_default_date`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `test_default_date` (
   `id` int(11) NOT NULL,
   `datetime_none` datetime NOT NULL,
   `date_none` date NOT NULL,
-  `datetime_current` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `datetime_current` datetime NOT NULL DEFAULT current_timestamp(),
   `date_current` varchar(255) DEFAULT 'Current timestamp not supported for date',
   `datetime_null` datetime DEFAULT NULL,
   `date_null` date DEFAULT NULL,
   `datetime_defined` datetime NOT NULL DEFAULT '2000-01-01 01:23:45',
-  `date_defined` date NOT NULL DEFAULT '2000-01-01'
+  `date_defined` date NOT NULL DEFAULT '2000-01-01',
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Indexes for dumped tables
+-- Dumping data for table `test_default_date`
 --
 
---
--- Indexes for table `test_default_dates`
---
-ALTER TABLE `test_default_date`
-  ADD PRIMARY KEY (`id`);
-
-
+LOCK TABLES `test_default_date` WRITE;
+/*!40000 ALTER TABLE `test_default_date` DISABLE KEYS */;
+/*!40000 ALTER TABLE `test_default_date` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
--- Table structure for table `test_card`
+-- Table structure for table `test_null_default`
 --
 
-CREATE TABLE `test_card` (
-  `id` int(11) NOT NULL,
-  `title` varchar(255) NOT NULL,
-  `type` varchar(255) NOT NULL,
-  `text` text NOT NULL,
-  `image_url` text NOT NULL,
-  `alt_text` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+DROP TABLE IF EXISTS `test_null_default`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `test_null_default` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `null_var` varchar(255) DEFAULT NULL,
+  `non_null_var_def` varchar(255) NOT NULL,
+  `non_null_var_no_def` varchar(255) DEFAULT NULL,
+  `nullable_w_default` varchar(255) DEFAULT 'THIS IS THE DEFAULT',
+  `non_null_default` varchar(255) NOT NULL DEFAULT 'I CANNOT BE NULL',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `test_card`
+-- Dumping data for table `test_null_default`
 --
 
-INSERT INTO `test_card` (`id`, `title`, `type`, `text`, `image_url`, `alt_text`) VALUES
-(1, 'iTunes', 'music', 'Apple iTunes Music', 'https://kenchapple.com/wp-content/uploads/2013/03/22-100x100.jpg', 'Alt Text iTunes'),
-(2, 'YouTube', 'video', 'YouTube Video Service', 'https://kenchapple.com/wp-content/uploads/2013/03/3-100x100.jpg', 'Alt Text Youtube'),
-(3, 'AirPlay Direct', 'music', 'Airplay Direct Music Service', 'https://kenchapple.com/wp-content/uploads/2013/03/4-100x100.jpg', 'Alt Text AirplayDirect');
+LOCK TABLES `test_null_default` WRITE;
+/*!40000 ALTER TABLE `test_null_default` DISABLE KEYS */;
+INSERT INTO `test_null_default` VALUES (1,'three','smelly','four','THIS IS THE DEFAULT','I CANNOT BE NULL'),(2,NULL,'non null',NULL,'THIS IS THE DEFAULT','I CANNOT BE NULL');
+/*!40000 ALTER TABLE `test_null_default` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
--- Indexes for dumped tables
+-- Table structure for table `vote`
 --
-
---
--- Indexes for table `test_card`
---
-ALTER TABLE `test_card`
-  ADD PRIMARY KEY (`id`);
-
---
--- AUTO_INCREMENT for dumped tables
---
-
---
--- AUTO_INCREMENT for table `test_card`
---
-ALTER TABLE `test_card`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 DROP TABLE IF EXISTS `vote`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
@@ -554,105 +653,15 @@ LOCK TABLES `vote` WRITE;
 /*!40000 ALTER TABLE `vote` DISABLE KEYS */;
 INSERT INTO `vote` VALUES (1,1,'1','2017-12-01 00:00:00','2017-12-01 00:00:00'),(2,1,'-1','2017-12-01 00:00:00','2017-12-01 00:00:00'),(3,1,'1','2017-12-01 00:00:00','2017-12-01 00:00:00'),(4,2,'1','2017-12-06 00:00:00','2017-12-01 00:00:00'),(5,2,'1','2017-12-01 00:00:00','2017-12-08 00:00:00');
 /*!40000 ALTER TABLE `vote` ENABLE KEYS */;
-
-
---
--- Table structure for table `magicField`
---
-
 UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
-DROP TABLE IF EXISTS `magicField`;
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
-CREATE TABLE `magicField` (
-  `id` int(11) NOT NULL,
-  `editsome_markdown` varchar(2000) NOT NULL,
-  `typesome_sql_code` varchar(2000) NOT NULL,
-  `typesome_php_code` text NOT NULL,
-  `typesome_python_code` text NOT NULL,
-  `typesome_javascript_code` varchar(3000) NOT NULL,
-  `this_datetime` datetime NOT NULL DEFAULT current_timestamp(),
-  `this_date` DATE NOT NULL DEFAULT current_timestamp(),
-  `created_at` datetime NOT NULL DEFAULT current_timestamp(),
-  `updated_at` datetime NOT NULL DEFAULT current_timestamp(),
-  `deleted_at` datetime DEFAULT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-
---
--- Indexes for dumped tables
---
-
---
--- Indexes for table `magicField`
---
-ALTER TABLE `magicField`
-  ADD PRIMARY KEY (`id`);
-
---
--- AUTO_INCREMENT for dumped tables
---
-
---
--- AUTO_INCREMENT for table `magicField`
---
-ALTER TABLE `magicField`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-COMMIT;
-
-
--- --------------------------------------------------------
-
---
--- Table structure for table `tags_report`
---
-
-DROP TABLE IF EXISTS `tags_report`;
-
-CREATE TABLE `tags_report` (
-  `id` bigint(20) NOT NULL,
-  `field_to_bold_in_report_display` varchar(255) NOT NULL,
-  `field_to_hide_by_default` varchar(255) NOT NULL,
-  `field_to_italic_in_report_display` varchar(255) NOT NULL,
-  `field_to_right_align_in_report` varchar(255) NOT NULL,
-  `field_to_bolditalic_in_report_display` varchar(255) NOT NULL,
-  `numeric_field` int(11) NOT NULL,
-  `decimal_field` decimal(10,4) NOT NULL,
-  `currency_field` varchar(255) NOT NULL,
-  `percent_field` int(11) NOT NULL,
-  `url_field` varchar(255) NOT NULL,
-  `time_field` time NOT NULL,
-  `date_field` date NOT NULL,
-  `datetime_field` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `tags_report`
---
-
-INSERT INTO `tags_report` (`id`, `field_to_bold_in_report_display`, `field_to_hide_by_default`, `field_to_italic_in_report_display`, `field_to_right_align_in_report`, `field_to_bolditalic_in_report_display`, `numeric_field`, `decimal_field`, `currency_field`, `percent_field`, `url_field`, `time_field`, `date_field`, `datetime_field`) VALUES
-(1, 'bold', 'hidden', 'italic', 'r-align', 'bold and italic', 100, '12.3450', '36.50', 85, 'https://google.com', '02:11:00', '2018-12-05', '2018-12-19 06:05:08');
-
---
--- Indexes for dumped tables
---
-
---
--- Indexes for table `tags_report`
---
-ALTER TABLE `tags_report`
-  ADD PRIMARY KEY (`id`);
-
-ALTER TABLE `tags_report`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
-DROP TABLE IF EXISTS `leading_zero`;
-CREATE TABLE `leading_zero` (
-    `id` int(11) NOT NULL AUTO_INCREMENT,
-    `leading_zero_int` int(11) NOT NULL,
-    `leading_zero_string` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-    PRIMARY KEY (`id`)
-);
-
-INSERT INTO `leading_zero` (`id`, `leading_zero_int`, `leading_zero_string`) VALUES
-(1,	1,	'001'),
-(2,	2,	'000234s');
+-- Dump completed on 2021-03-08 14:31:22
