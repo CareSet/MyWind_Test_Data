@@ -645,3 +645,14 @@ ALTER TABLE `tags_report`
 ALTER TABLE `tags_report`
   MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
+DROP TABLE IF EXISTS `leading_zero`;
+CREATE TABLE `leading_zero` (
+    `id` int(11) NOT NULL AUTO_INCREMENT,
+    `leading_zero_int` int(11) NOT NULL,
+    `leading_zero_string` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+    PRIMARY KEY (`id`)
+);
+
+INSERT INTO `leading_zero` (`id`, `leading_zero_int`, `leading_zero_string`) VALUES
+(1,	1,	'001'),
+(2,	2,	'000234s');
